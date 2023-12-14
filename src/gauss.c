@@ -14,7 +14,6 @@ int eliminate(Matrix *mat, Matrix *b) {
             }
         }
 
-        // Zamiana wierszy
         for (int j = k; j < mat->r; j++) {
             double temp = mat->data[k][j];
             mat->data[k][j] = mat->data[maxRow][j];
@@ -25,7 +24,6 @@ int eliminate(Matrix *mat, Matrix *b) {
         b->data[k][0] = b->data[maxRow][0];
         b->data[maxRow][0] = temp;
 
-        // Eliminacja
         for (int i = k + 1; i < mat->r; i++) {
             if (mat->data[k][k] == 0) {
                 return 1; // Błąd dzielenia przez 0 (element na diagonali = 0)
