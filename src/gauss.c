@@ -1,7 +1,7 @@
 #include "gauss.h"
 
 int eliminate(Matrix *mat, Matrix *b) {
-    int n = mat->rows;
+    int n = mat->r;
 
     for (int k = 0; k < n - 1; k++) {
         // Eliminacja współczynników poniżej diagonali
