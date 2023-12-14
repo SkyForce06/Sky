@@ -21,5 +21,5 @@ int eliminate(Matrix *mat, Matrix *b) {
         }
     }
 
-    return 0; // Eliminacja zakończona sukcesem
+    return 0; // Eliminacja zakończona sukcesem 
 }
