@@ -7,22 +7,22 @@ int eliminate(Matrix *mat, Matrix *b) {
 
     for (int k = 0; k < mat->r - 1; k++) {
         // Wybór elementu głównego
-        int maxRow = k;
+        int minRow = k;
         for (int i = k + 1; i < mat->r; i++) {
-            if (fabs(mat->data[i][k]) > fabs(mat->data[maxRow][k])) {
-                maxRow = i;
+            if (fabs(mat->data[i][k]) < fabs(mat->data[minRow][k])) {
+                minRow = i;
             }
         }
 
         for (int j = k; j < mat->r; j++) {
             double temp = mat->data[k][j];
-            mat->data[k][j] = mat->data[maxRow][j];
-            mat->data[maxRow][j] = temp;
+            mat->data[k][j] = mat->data[minRow][j];
+            mat->data[minRow][j] = temp;
         }
 
         double temp = b->data[k][0];
-        b->data[k][0] = b->data[maxRow][0];
-        b->data[maxRow][0] = temp;
+        b->data[k][0] = b->data[minRow][0];
+        b->data[minRow][0] = temp;
 
         for (int i = k + 1; i < mat->r; i++) {
             if (mat->data[k][k] == 0) {
@@ -41,4 +41,3 @@ int eliminate(Matrix *mat, Matrix *b) {
 
     return 0; // Eliminacja zakończona sukcesem
 }
-
